@@ -3,7 +3,7 @@ Check_Log
 
 ## Description
 Be able to check the logs and isolate errors which are not really errors.</br>
-Allow to know if a delivery add new errors or if the application is still working as intended.</br>
+Allows to know if a delivery add new errors or if the application is still working as intended.</br>
 
 ## Usage
 How to run the different mains :</br>
