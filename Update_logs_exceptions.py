@@ -11,7 +11,7 @@ class Update_logs_exceptions:
 		Init the run of the update for the exception files
 
 		Arguments:
-		args 			-- name of the app file to make the update on
+		args 		-- name of the app file to make the update on
 		cleanRepository -- run the cleaning of the tmp repository
 		"""
 		self.__list_app = args
