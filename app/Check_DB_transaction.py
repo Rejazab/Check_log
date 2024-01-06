@@ -46,8 +46,8 @@ class Check_DB_Transaction:
 		Execute the command on the server
 
 		Arguments:
-		command_line -- the command to run
-		server 		 -- the server where the command is run
+		command_line	-- the command to run
+		server		-- the server where the command is run
 
 		Return:
 		stdout -- return the content from the execution 
