@@ -37,8 +37,8 @@ class Check_Log:
 		Execute the command on the server
 
 		Arguments:
-		command_line -- the command to run
-		server 		 -- the server where the command is run
+		command_line	-- the command to run
+		server		-- the server where the command is run
 
 		Return:
 		stdout -- return the content from the execution 
@@ -168,10 +168,10 @@ class Check_Log:
 		Check the logs in error to see if they are true errors or not
 
 		Arguments:
-		app 				-- the app which has the logs processed
-		logs 				-- the logs to run the check on
-		first_execution_pid -- if it's not the first execution, a check will be made with the first timestamp to know if there are new errors or not after the delivery
-		ref_log				-- the error logs from the first execution
+		app 			-- the app which has the logs processed
+		logs 			-- the logs to run the check on
+		first_execution_pid	-- if it's not the first execution, a check will be made with the first timestamp to know if there are new errors or not after the delivery
+		ref_log			-- the error logs from the first execution
 
 		Return:
 		filtered_log -- the logs filtered by the exceptions
