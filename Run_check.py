@@ -1,8 +1,8 @@
 import sys
-from app.Check_log import Check_Log
-from app.Check_DB_transaction import Check_DB_Transaction
+from app.Check_log import CheckLog
+from app.Check_DB_transaction import CheckDBTransaction
 
-class Run_Check:
+class RunCheck:
 	__checkDB = False
 	__checkLog = False
 	__id_release = ''
@@ -44,7 +44,7 @@ class Run_Check:
 		Return:
 		json -- contains the result of the check on the DB for each server
 		"""
-		Check_DB = Check_DB_Transaction(self.__data)
+		Check_DB = CheckDBTransaction(self.__data)
 		Check_DB.init_DB_check()
 		return Check_DB.get_logs_from_convention(True)
 		
@@ -56,16 +56,16 @@ class Run_Check:
 		Return:
 		json -- contains the results of the check on the logs for each app
 		"""
-		Check_LOG = Check_Log(self.__data, self.__id_release)
+		Check_LOG = CheckLog(self.__data, self.__id_release)
 		Check_LOG.init_Log_Check()
 		return Check_LOG.get_check_results()
 
 
 def main(id_release, log = False, db = False, **kwargs):
 	"""
-	Main use to call the class 'Run_Check' directly with args from the cmd
+	Main use to call the class 'RunCheck' directly with args from the cmd
 	"""
-	Run_Check(id_release, kwargs, log, db)
+	RunCheck(id_release, kwargs, log, db)
 
 if __name__ == "__main__":
 	if sys.argv[1] in ("True","False"):

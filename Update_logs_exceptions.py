@@ -1,8 +1,8 @@
 import os
 import sys
-from app.Error_log_treatment import Error_Log_Processing
+from app.Error_log_treatment import ErrorLogProcessing
 
-class Update_logs_exceptions:
+class UpdateLogsExceptions:
 	__list_app = []
 	__tmp_dir_path = 'app/tmp'
 
@@ -11,7 +11,7 @@ class Update_logs_exceptions:
 		Init the run of the update for the exception files
 
 		Arguments:
-		args 		-- name of the app file to make the update on
+		args 			-- name of the app file to make the update on
 		cleanRepository -- run the cleaning of the tmp repository
 		"""
 		self.__list_app = args
@@ -29,7 +29,7 @@ class Update_logs_exceptions:
 		"""
 		results = {}
 		for app in self.__list_app:
-			app_error_to_update = Error_Log_Processing(app.replace('_','-'))
+			app_error_to_update = ErrorLogProcessing(app.replace('_','-'))
 			results[app] = app_error_to_update.add_error()
 		print(results)
 
@@ -50,9 +50,9 @@ class Update_logs_exceptions:
 
 def main(cleanRepository = False, *args):
 	"""
-	Main use to call the class 'Update_logs_exceptions' directly with args from the cmd
+	Main use to call the class 'UpdateLogsExceptions' directly with args from the cmd
 	"""
-	Update_logs_exceptions(args, cleanRepository)
+	UpdateLogsExceptions(args, cleanRepository)
 
 if __name__ == "__main__":
 	if sys.argv[1] in ("True","False") and len(sys.argv) == 1:

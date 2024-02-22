@@ -2,7 +2,7 @@ import os
 import json
 from datetime import date, datetime, timedelta
 
-class Error_Log_Processing:
+class ErrorLogProcessing:
 	__error_file = "/data/errors_{app}.txt"
 	__exception_file = "/data/exceptions_{app}.txt" 
 	__exceptions = ''

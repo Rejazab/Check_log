@@ -3,11 +3,11 @@ import json
 import shlex, subprocess
 import re
 from datetime import date, datetime, timedelta
-from .Error_log_treatment import Error_Log_Processing
+from .Error_log_treatment import ErrorLogProcessing
 
 
 
-class Check_Log:
+class CheckLog:
 	__tmp_dir_path = "/tmp/"
 	__app_log_path = "/share/logs/*/{app_name}/sub/*{YYMMDD}*"
 	__app_server_log_path = "/share/logs/*/{app_name}/server.log"
@@ -37,8 +37,8 @@ class Check_Log:
 		Execute the command on the server
 
 		Arguments:
-		command_line	-- the command to run
-		server		-- the server where the command is run
+		command_line -- the command to run
+		server 		 -- the server where the command is run
 
 		Return:
 		stdout -- return the content from the execution 
@@ -118,7 +118,7 @@ class Check_Log:
 			#Server log
 			elif typeLog == 'server':
 				if catLog == 'error':
-					processed_log = re.sub("[0-9]*(:[0-9]*){2},[0-9]{3}|\'([a-zA-Z]|[0-9])*\'|\'([0-9]*_([0-9]|[a-zA-Z])*)*\'|[0-9]*\#+[0-9]*|task\-[0-9]*",'',logs)
+					processed_log = re.sub("[0-9]*(:[0-9]*){2},[0-9]{3}|\'([a-zA-Z]|[0-9])*\'|\'([0-9]*_([0-9]|[a-zA-Z])*)*\'|[0-9]*\#+[0-9]*",'',logs)
 					log_filter = content[app][self.__timestamp]['server_error'].split('\n') if len(content[app][self.__timestamp]['server_error']) > 0 else []
 					final_log = ''
 					for log in processed_log.split('\n'):
@@ -168,16 +168,16 @@ class Check_Log:
 		Check the logs in error to see if they are true errors or not
 
 		Arguments:
-		app 			-- the app which has the logs processed
-		logs 			-- the logs to run the check on
-		first_execution_pid	-- if it's not the first execution, a check will be made with the first timestamp to know if there are new errors or not after the delivery
-		ref_log			-- the error logs from the first execution
+		app 				-- the app which has the logs processed
+		logs 				-- the logs to run the check on
+		first_execution_pid -- if it's not the first execution, a check will be made with the first timestamp to know if there are new errors or not after the delivery
+		ref_log				-- the error logs from the first execution
 
 		Return:
 		filtered_log -- the logs filtered by the exceptions
 		"""
 		filtered_log = ''
-		error_treatment = Error_Log_Processing(app)
+		error_treatment = ErrorLogProcessing(app)
 		error_treatment.open_exception_file()
 		exceptions = error_treatment.get_exception_information()
 		if not first_execution_pid :
